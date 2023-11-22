@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/ship', [ShippingController::class, 'index']);
+Route::get('/', [ArticleController::class, 'index']);
+Route::get('/editor', [EditorController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
