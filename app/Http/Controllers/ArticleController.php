@@ -38,7 +38,7 @@ class ArticleController extends Controller
                 "updated_at" => "2023-10-12 18:30:00"
             ]
         ];
-        return view("article.index")->with(compact('data'));
+        return view("dashboard.article.index")->with(compact('data'));
     }
 }
 

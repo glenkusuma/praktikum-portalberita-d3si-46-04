@@ -16,6 +16,10 @@
 
         <!-- Styles -->
         @livewireStyles
+        {{-- Costom Style --}}
+        @if (isset($style))
+            {{ $style }}
+        @endif
     </head>
     <body class="font-sans antialiased">
         <x-banner />
@@ -41,5 +45,8 @@
         @stack('modals')
 
         @livewireScripts
+        @if (isset($script))
+            {{ $script }}
+        @endif
     </body>
 </html>

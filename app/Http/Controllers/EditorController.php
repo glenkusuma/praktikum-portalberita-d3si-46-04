@@ -38,7 +38,7 @@ class EditorController extends Controller
             ]
         ];
 
-        return view("editor.index")->with(compact('data'));
+        return view("dashboard.editor.index")->with(compact('data'));
     }
 }
 
