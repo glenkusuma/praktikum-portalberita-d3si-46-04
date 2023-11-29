@@ -15,9 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/ship', [ShippingController::class, 'index']);
-Route::get('/', [ArticleController::class, 'index']);
+// Route::get('/', [ArticleController::class, 'index']);
 Route::get('/editor', [EditorController::class, 'index']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
