@@ -4,6 +4,8 @@ use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test',[TestController::class, 'show'] );
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -30,6 +34,23 @@ Route::middleware([
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+    // Route::resource('article', ArticleController::class)->only([
+    //     'show', 'seed' , 'truncate'
+    // ]);
+    // Route::get('/article',[ArticleController::class, 'index'])->name('article');
+
+
+    Route::controller(ArticleController::class)->prefix('article')->group(function() {
+        Route::get('/','index')->name('article');
+        Route::get('/seed','seed');
+        Route::get('/show','show');
+        Route::get('/truncate','truncate');
+    });
     Route::get('/editor', [EditorController::class, 'index'])->name('editor');
+});
+
+Route::controller(TestController::class)->prefix('test')->group(function (){
+    Route::get('/','show');
+    Route::get('/seed','seed');
+    Route::get('truncate','truncate');
 });
