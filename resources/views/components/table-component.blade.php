@@ -13,7 +13,7 @@
         @foreach ($data as $row)
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             @foreach ($row as $value)
-                <td @if($loop->first) scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" @else class="px-6 py-4" @endif >{{ Str::limit($value,60) }}</td>
+                <td @if($loop->first) scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white px-6 py-4 whitespace-nowrap overflow-ellipsis max-w-[10rem]" @else class="px-6 py-4" @endif >{{ Str::limit($value,60) }}</td>
             @endforeach
         </tr>
     @endforeach
